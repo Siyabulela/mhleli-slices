@@ -10,6 +10,7 @@ export default function ItemGrid({ items }) {
             <span className="mark">{item.name}</span>
           </p>
           <img
+            id={item.name}
             width="500"
             height="400"
             src={`${item.image.asset.url}?w=500&h=400&fit=crop`}

@@ -105,14 +105,14 @@ export default function Logo() {
         <h1>
           <span className="slicks">
             <span className="letter S">S</span>
-            <span className="letter l">l</span>
             <span className="letter i">i</span>
-            <span className="letter c">c</span>
-            <span className="letter k">k</span>
+            <span className="letter l">y</span>
+            <span className="letter c">a</span>
+            {/* <span className="letter k">k</span> */}
             <span className="letter apos">'</span>
             <span className="letter s">s</span>
           </span>
-          <span className="slices">slices</span>
+          <span className="slices">Pizza</span>
         </h1>
       </div>
     </LogoStyles>
