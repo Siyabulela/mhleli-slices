@@ -1,9 +1,9 @@
 const nodemailer = require('nodemailer');
 
-function generateOrderEmail({ order, total }) {
+function generateOrderEmail({ order, total, name }) {
   return `<div>
     <h2>Your recent order for ${total}</h2>
-    <p>Please start walking over, we will have your order ready in the next 20 minutes</p>
+    <p> Hello ${name}. Please start walking over, we will have your order ready in the next 20 minutes</p>
     <ul>
       ${order
         .map(
@@ -71,7 +71,11 @@ exports.handler = async (event, context) => {
     from: process.env.SMTP_LOGIN,
     to: `${body.name} <${body.email}>, siyabulela.khumalo@umuzi.org`,
     subject: 'New Order!',
-    html: generateOrderEmail({ order: body.order, total: body.total }),
+    html: generateOrderEmail({
+      order: body.order,
+      total: body.total,
+      name: body.name,
+    }),
   });
   return {
     statusCode: 200,
