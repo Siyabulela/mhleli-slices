@@ -1,7 +1,25 @@
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import OrderContext from '../components/OrderContext';
 import attachNamesAndPrices from './attachNamesAndPrices';
 import calculateOrderTotal from './calculateOrderTotal';
+
+function MessageSent() {
+  return (
+    <div>
+      <h2 className="center">
+        <span className="mark tilt">Order Received</span>
+      </h2>
+      <p>Come on down for your pizza!</p>
+      <p>
+        We have{' '}
+        <a href="/beers" className="mark tilt">
+          beers
+        </a>{' '}
+        in da house!
+      </p>
+    </div>
+  );
+}
 
 export default function usePizza({ pizzas, values }) {
   // 1. Create some state to hold orders
@@ -60,7 +78,7 @@ export default function usePizza({ pizzas, values }) {
       setError(text.message);
     } else {
       setLoading(false);
-      setMessage('Come on down for your pizza');
+      setMessage(MessageSent());
     }
   }
 

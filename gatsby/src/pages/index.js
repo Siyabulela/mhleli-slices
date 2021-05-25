@@ -1,6 +1,7 @@
 import React from 'react';
 import ItemGrid from '../components/ItemGrid';
 import LoadingGrid from '../components/LoadingGrid';
+import SEO from '../components/SEO';
 import { HomePageGrid } from '../styles/Grids';
 import useLatestData from '../utils/useLatestData';
 
@@ -36,13 +37,16 @@ function HotSlices({ hotSlices }) {
 export default function HomePage() {
   const { slicemasters, hotSlices } = useLatestData();
   return (
-    <div className="center">
-      <h1>The Best Pizza in KwaDukuza</h1>
-      <p>Open 11am - 11pm Every day</p>
-      <HomePageGrid>
-        <CurrentlySlicing slicemasters={slicemasters} />
-        <HotSlices hotSlices={hotSlices} />
-      </HomePageGrid>
-    </div>
+    <>
+      <SEO title="Hot Now" />
+      <div className="center">
+        <h1>The Best Pizza in KwaDukuza</h1>
+        <p>Open 11am - 11pm Every day</p>
+        <HomePageGrid>
+          <CurrentlySlicing slicemasters={slicemasters} />
+          <HotSlices hotSlices={hotSlices} />
+        </HomePageGrid>
+      </div>
+    </>
   );
 }
