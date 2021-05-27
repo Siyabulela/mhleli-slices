@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React from 'react';
 import { ItemsGrid, ItemStyles } from '../styles/Grids';
 
@@ -6,8 +7,15 @@ export default function ItemGrid({ items }) {
     <ItemsGrid>
       {items.map((item) => (
         <ItemStyles key={item._id}>
+          {/* {console.log(item.slug.current)} */}
           <p>
-            <span className="mark">{item.name}</span>
+            <Link
+              to={`${item._type === 'person' ? 'slicemasters/' : 'pizza/'}${
+                item.slug.current
+              }`}
+            >
+              <span className="mark">{item.name}</span>
+            </Link>
           </p>
           <img
             id={item.name}

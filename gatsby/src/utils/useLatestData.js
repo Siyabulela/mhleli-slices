@@ -5,6 +5,10 @@ const gql = String.raw;
 const deets = `
     name
     _id
+    _type
+    slug{
+      current
+    }
     image {
       asset {
         url

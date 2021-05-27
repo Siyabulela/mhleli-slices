@@ -19,14 +19,20 @@ const SiteBorderStyles = styled.div`
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.044);
   border: 5px solid white;
   @media (max-width: 1100px) {
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+  }
+  @media (max-width: 230px) {
+    overflow: hidden;
+    font-size: x-small;
   }
 `;
 
 const ContentStyles = styled.div`
   background: white;
   padding: 2rem;
+  padding-bottom: 0.5rem;
 `;
 
 export default function Layout({ children }) {

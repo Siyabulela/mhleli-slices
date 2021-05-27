@@ -25,6 +25,9 @@ export const ItemStyles = styled.div`
     height: auto;
     font-size: 0;
   }
+  a {
+    text-decoration: none;
+  }
   p {
     transform: rotate(-2deg) translateY(-10px);
     position: absolute;

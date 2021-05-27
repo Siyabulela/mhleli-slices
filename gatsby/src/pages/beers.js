@@ -2,6 +2,8 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import SEO from '../components/SEO';
+import formatMoney from '../utils/formatMonet';
+import { calculatePizzaPrice } from '../utils/calculatePizzaPrice';
 
 const BeerGridStyle = styled.div`
   display: grid;
@@ -33,23 +35,27 @@ export default function BeersPage({ data }) {
         We have {beers.length} Beers available. Dine Only
       </h2>
       <BeerGridStyle>
-        {beers.map((beer) => {
-          const rating = Math.round(beer.rating?.average);
-          return (
-            <SingleBeerStyles key={beer.id}>
-              <img src={beer.image} alt={beer.name} />
-              <h3>{beer.name}</h3>
-              {beer.price}
-              <p title={`${rating} out of 5 stars`}>
-                {`⭐️`.repeat(rating)}
-                <span style={{ filter: `grayscale(100%)` }}>
-                  {`⭐️`.repeat(5 - rating)}
-                </span>
-                <span>({beer.rating?.reviews})</span>
-              </p>
-            </SingleBeerStyles>
-          );
-        })}
+        {beers
+          .filter((beer) => beer.image)
+          .map((beer) => {
+            const price = parseFloat(beer.price.replace(/[$]/i, ''));
+            const rating = Math.round(beer.rating?.average);
+            console.log(beer.image.status);
+            return (
+              <SingleBeerStyles key={beer.id}>
+                <img src={beer.image} alt={beer.name} />
+                <h3>{beer.name}</h3>
+                {formatMoney(calculatePizzaPrice(price, 'R'))}
+                <p title={`${rating} out of 5 stars`}>
+                  {`⭐️`.repeat(rating)}
+                  <span style={{ filter: `grayscale(100%)` }}>
+                    {`⭐️`.repeat(5 - rating)}
+                  </span>
+                  <span>({beer.rating?.reviews})</span>
+                </p>
+              </SingleBeerStyles>
+            );
+          })}
       </BeerGridStyle>
     </>
   );
