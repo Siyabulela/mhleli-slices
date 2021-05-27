@@ -23,5 +23,11 @@ export default {
         token: process.env.SANITY_TOKEN,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-adsense`,
+      options: {
+        publisherId: `ca-pub-2282434311490598`,
+      },
+    },
   ],
 };
